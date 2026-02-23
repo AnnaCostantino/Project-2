@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+}
+
+.background{
+    background-color: chocolate;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.ball{
+    background-color: white;
+    height: 15vw;
+    width: 15vw;
+    border-radius: 50%;
+    position: fixed;
+    top: 50%;
+    left: 7%;
+}
+
+.orange1{
+    background-color: orange;
+    height: 10vw;
+    width: 10vw;
+    border-radius: 50%;
+    position: fixed;
+    top: 30%;
+    left: 20%;
+}
+
+.puter-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 20%;
+    left: 60%;
+}
+
+.puter-block{
+    background-color: gray;
+    height: 28vw;
+    width: 26vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2vw;
+}
+
+.puter-screen{
+    background-color: black;
+    height: 15vw;
+    width: 19vw;
+}
+
+.keyboard{
+    background-color: gray;
+    height: 8vw;
+    width: 35vw;
+}
