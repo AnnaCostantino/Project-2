@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Your Pasta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Figma Frame 1 (node 1:2) — pasta selection / Timer -->
+  <div class="page page--selection" id="selectionPage">
+
+    <h1 class="selection-title">Select your pasta!</h1>
+
+    <div class="selection-list-bg" aria-hidden="true">
+      <img src="https://www.figma.com/api/mcp/asset/61c3238b-52d7-42f0-8653-d397573e409e" alt="">
+    </div>
+
+    <div class="selection-pot">
+      <img src="https://www.figma.com/api/mcp/asset/bca89613-7b97-45dd-b05e-abfaf703f0ea" alt="">
+    </div>
+
+    <img class="selection-pot-shadow" src="https://www.figma.com/api/mcp/asset/ef64e1af-f18d-416d-adc1-6690df6eca96" alt="">
+
+    <div class="nav-menu-btn" id="menuBtn" tabindex="0" role="button" aria-haspopup="true">
+      Menu
+      <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-dropdown__header">Menu</div>
+        <a href="sub-pages/saved-recipes.html">Saved Recipes</a>
+        <a href="sub-pages/song-library.html">Song Library</a>
+        <a href="index.html">Timer</a>
+      </div>
+    </div>
+
+    <a class="pasta-option pasta-option--1" href="sub-pages/frame-2.html">Mac N Peas</a>
+    <a class="pasta-option pasta-option--2" href="sub-pages/frame-40.html">Rigatoni</a>
+    <a class="pasta-option pasta-option--3" href="sub-pages/frame-42.html">Spaghetti</a>
+    <a class="pasta-option pasta-option--4" href="sub-pages/frame-44.html">Farfalle</a>
+    <a class="pasta-option pasta-option--5" href="sub-pages/frame-45.html">Ravioli</a>
+
+  </div>
+</body>
+</html>

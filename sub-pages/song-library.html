@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song Library</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../script.js" defer></script>
+</head>
+<body>
+  <div class="page page--songs">
+
+    <!-- Navigation -->
+    <div class="nav-menu-btn" id="menuBtn" tabindex="0" role="button" aria-haspopup="true">
+      Menu
+      <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-dropdown__header">Menu</div>
+        <a href="saved-recipes.html">Saved Recipes</a>
+        <a href="song-library.html">Song Library</a>
+        <a href="../index.html">Timer</a>
+      </div>
+    </div>
+
+    <!-- Add Song Button + Dropdown -->
+    <button class="nav-add-btn" id="addSongBtn" type="button">+</button>
+    <div class="add-song-dropdown" id="addSongDropdown">
+      <div class="add-song-panel__title">Add Song</div>
+      <button class="add-song-panel__btn" id="addFromSpotify">Select from Spotify</button>
+      <button class="add-song-panel__btn" id="addFromAppleMusic">Select from Apple Music</button>
+    </div>
+
+    <!-- Page Title -->
+    <h1 class="song-library-title">Song Library</h1>
+
+    <!-- Song Grid (populated by script.js) -->
+    <div class="songs-grid" id="songsGrid"></div>
+
+    <!-- Song Detail Modal -->
+    <div class="modal-overlay" id="songModal" role="dialog" aria-modal="true">
+      <div class="modal modal--song">
+        <button class="modal__close" id="closeSongModal" type="button">&#x2715;</button>
+        <h2 class="modal__title" id="songModalTitle"></h2>
+        <div class="modal__artist" id="songModalArtist"></div>
+        <img class="modal__image" id="songModalImage" src="" alt="">
+        <div class="modal__length" id="songModalLength"></div>
+        <button class="btn-remove" id="removeSongBtn">Remove Song</button>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

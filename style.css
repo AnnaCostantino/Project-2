@@ -1,0 +1,2578 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&family=Inter:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #fff6dc;
+  --black: #000000;
+  --green: #02a45e;
+  --gray: #d9d9d9;
+  --font-serif: 'Instrument Serif', serif;
+  --font-sans: 'Instrument Sans', sans-serif;
+}
+
+body {
+  background-color: var(--cream);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  min-width: 1280px;
+}
+
+/* ---- Page Wrapper ---- */
+.page {
+  position: relative;
+  width: 1280px;
+  min-height: 832px;
+  margin: 0 auto;
+  background-color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ---- Menu Button (top-left) — Figma: default cream, hover #d9d9d9 ---- */
+.nav-menu-btn {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  width: 117px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  user-select: none;
+  transition: background-color 0.15s;
+}
+
+.nav-menu-btn:hover {
+  background-color: var(--gray);
+}
+
+/* Menu dropdown — Figma OpenMenu: 256px, inner “Menu” header + pill links */
+.menu-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 256px;
+  padding: 18px 14px 14px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 200;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.nav-menu-btn.is-open {
+  background-color: var(--gray);
+}
+
+.nav-menu-btn.is-open .menu-dropdown {
+  display: flex;
+}
+
+.menu-dropdown__header {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.menu-dropdown a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 41px;
+  padding: 8px 12px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--black);
+  text-decoration: none;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  text-align: center;
+  transition: background-color 0.15s;
+}
+
+.menu-dropdown a:hover {
+  background-color: var(--gray);
+}
+
+/* ---- Add Button (+) — Figma Group 12: default cream, hover #d9d9d9 ---- */
+.nav-add-btn {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--black);
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  line-height: 1;
+  transition: background-color 0.15s;
+}
+
+.nav-add-btn:hover,
+.nav-add-btn.is-open {
+  background-color: var(--gray);
+}
+
+/* ---- Selection Page — Figma Frame 1 (node 1:2), 1280×832 ---- */
+.page--selection {
+  isolation: isolate;
+}
+
+.selection-title {
+  position: absolute;
+  left: 50%;
+  top: 72px;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 116px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 90px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* List frame graphic (Group 2) — 469×251 @ top 156, centered */
+.page--selection .selection-list-bg {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 156px;
+  transform: translateX(-50%);
+  width: 469px;
+  height: 251px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.page--selection .selection-list-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* Pot (image 2) — 761×447 @ top 407 */
+.page--selection .selection-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 407px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--selection .selection-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ellipse under pot opening — 516×67 @ 383,462 */
+.page--selection .selection-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 462px;
+  width: 516px;
+  height: 67px;
+  z-index: 3;
+  pointer-events: none;
+  display: block;
+}
+
+.page--selection .nav-menu-btn {
+  z-index: 50;
+}
+
+/* Pasta pills — Instrument Sans Medium 24px; 428×41 @ left 419 */
+.page--selection .pasta-option {
+  position: absolute;
+  left: 419px;
+  width: 428px;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  z-index: 5;
+  line-height: 1;
+  padding: 0;
+}
+
+.page--selection .pasta-option--1 {
+  top: 163px;
+}
+
+.page--selection .pasta-option--2 {
+  top: 212px;
+}
+
+.page--selection .pasta-option--3 {
+  top: 261px;
+}
+
+.page--selection .pasta-option--4 {
+  top: 310px;
+}
+
+.page--selection .pasta-option--5 {
+  top: 359px;
+}
+
+.page--selection .pasta-option:hover {
+  background-color: var(--gray);
+}
+
+/* ---- Saved Recipes Page ---- */
+.recipes-title {
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  font-family: var(--font-serif);
+  font-size: 90px;
+  font-weight: normal;
+  font-style: normal;
+  color: var(--black);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Recipe grid */
+.recipes-grid {
+  position: absolute;
+  top: 181px;
+  left: 294px;
+  width: 693px;
+  display: grid;
+  grid-template-columns: 217px 217px 217px;
+  column-gap: 21px;
+  row-gap: 17px;
+}
+
+/* Recipe card */
+.recipe-card {
+  width: 217px;
+  height: 217px;
+  background-color: var(--cream);
+  border: 4px solid var(--black);
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.15s;
+}
+
+.recipe-card:hover {
+  background-color: var(--gray);
+}
+
+.recipe-card__name {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  height: 32px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--black);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.recipe-card__image {
+  position: absolute;
+  top: 48px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-card__image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ---- Modals ---- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255, 246, 220, 0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  position: relative;
+  width: 482px;
+  background-color: var(--cream);
+  border: 4px solid var(--black);
+  border-radius: 16px;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transform: scale(0.94);
+  transition: transform 0.2s;
+}
+
+.modal-overlay.is-open .modal {
+  transform: scale(1);
+}
+
+/* Close (×) button */
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 47px;
+  height: 47px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-family: var(--font-sans);
+  color: var(--black);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.modal__close:hover {
+  background-color: var(--gray);
+}
+
+/* Recipe detail modal */
+.modal--detail .modal__title {
+  font-family: var(--font-serif);
+  font-size: 52px;
+  font-weight: normal;
+  color: var(--black);
+  text-align: center;
+  width: 100%;
+  padding-right: 40px;
+}
+
+.modal--detail .modal__image {
+  width: 185px;
+  height: 185px;
+  object-fit: contain;
+}
+
+.modal--detail .modal__details {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  color: var(--black);
+  text-align: center;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.modal--detail .modal__details strong {
+  font-weight: 600;
+}
+
+/* Custom recipe modal */
+.modal--custom .modal__title {
+  font-family: var(--font-serif);
+  font-size: 52px;
+  font-weight: normal;
+  color: var(--black);
+  text-align: center;
+  width: 100%;
+  padding-right: 40px;
+}
+
+.modal--custom .modal__upload {
+  width: 169px;
+  height: 169px;
+  background-color: var(--gray);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  color: var(--black);
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.modal--custom .modal__upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: none;
+}
+
+.modal--custom .modal__fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.modal--custom .modal__input {
+  width: 100%;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 8px;
+  padding: 0 16px;
+  font-family: var(--font-sans);
+  font-size: 22px;
+  color: var(--black);
+  outline: none;
+}
+
+.modal--custom .modal__input::placeholder {
+  color: rgba(0,0,0,0.45);
+}
+
+.modal--custom .modal__input:focus {
+  border-color: var(--green);
+}
+
+.modal--custom .btn-save {
+  width: 229px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--green);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--green);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  margin-top: 4px;
+}
+
+.modal--custom .btn-save:hover {
+  background-color: var(--green);
+  color: var(--cream);
+}
+
+/* ---- Song Library Page ---- */
+.song-library-title {
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  font-family: var(--font-serif);
+  font-size: 90px;
+  font-weight: normal;
+  font-style: normal;
+  color: var(--black);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Song card grid */
+.songs-grid {
+  position: absolute;
+  top: 181px;
+  left: 294px;
+  width: 693px;
+  display: grid;
+  grid-template-columns: 217px 217px 217px;
+  column-gap: 21px;
+  row-gap: 17px;
+}
+
+/* Song card */
+.song-card {
+  width: 217px;
+  height: 217px;
+  background-color: var(--cream);
+  border: 4px solid var(--black);
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.15s;
+}
+
+.song-card:hover {
+  background-color: var(--gray);
+}
+
+.song-card__title {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  right: 14px;
+  /* Taller than 32px font so descenders (g, p, y) aren’t clipped; 32px cap-height box was cutting glyphs */
+  height: 38px;
+  line-height: 1.15;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--black);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.song-card__artist {
+  position: absolute;
+  top: 56px;
+  left: 17px;
+  right: 14px;
+  height: 32px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--black);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.song-card__image {
+  position: absolute;
+  top: 90px;
+  left: 53px;
+  width: 111px;
+  height: 111px;
+}
+
+.song-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Add Song dropdown — positioned at top-right, extending left from + button */
+.add-song-dropdown {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  display: none;
+  z-index: 200;
+}
+
+.add-song-dropdown.is-open {
+  display: block;
+}
+
+/* Push the + button to be visible above the dropdown panel */
+.page--songs .nav-add-btn {
+  z-index: 201;
+}
+
+/* Hide + after click while “Add Song” panel is open (Figma: control not shown when menu open) */
+.page--songs .nav-add-btn.is-open {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+.add-song-panel__title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.add-song-panel__btn {
+  display: block;
+  width: 100%;
+  height: 41px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--black);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s;
+  margin-bottom: 8px;
+}
+
+.add-song-panel__btn:last-child {
+  margin-bottom: 0;
+}
+
+.add-song-panel__btn:hover {
+  background-color: var(--gray);
+}
+
+/* Song detail modal */
+.modal--song .modal__title {
+  font-family: var(--font-serif);
+  font-size: 60px;
+  font-weight: normal;
+  color: var(--black);
+  text-align: center;
+  width: 100%;
+  padding-right: 40px;
+}
+
+.modal--song .modal__artist {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--black);
+  text-align: center;
+  width: 100%;
+}
+
+.modal--song .modal__image {
+  width: 164px;
+  height: 164px;
+  object-fit: cover;
+}
+
+.modal--song .modal__length {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  color: var(--black);
+  text-align: center;
+  width: 100%;
+}
+
+.modal--song .modal__length strong {
+  font-weight: 600;
+}
+
+.modal--song .btn-remove {
+  width: 229px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid #cd0202;
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 24px;
+  color: #cd0202;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.modal--song .btn-remove:hover {
+  background-color: #cd0202;
+  color: var(--cream);
+}
+
+/* ---- Figma Frame 2 (node 1:8) — 1280×832, positions from design file ---- */
+.page--frame2 {
+  isolation: isolate;
+}
+
+/* z: 1 — pot (image 2) */
+.page--frame2 .frame2-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 385px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page--frame2 .frame2-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* z: 2 — timer ring (Ellipse) */
+.page--frame2 .frame2-timer-ring {
+  position: absolute;
+  left: 528px;
+  top: 59px;
+  width: 229px;
+  height: 229px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--frame2 .frame2-timer-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* z: 3 — 8:00 (Inter Regular 64px; center at calc(50%+2.5px), 173.5px) */
+.page--frame2 .frame2-timer-readout {
+  position: absolute;
+  left: calc(50% + 2.5px);
+  top: 173.5px;
+  transform: translate(-50%, -50%);
+  width: 217px;
+  height: 107px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* z: 4 — shadow under pot opening */
+.page--frame2 .frame2-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 441px;
+  width: 516px;
+  height: 67px;
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+}
+
+/* z: 5 — now playing card fill */
+.page--frame2 .frame2-np-bg {
+  position: absolute;
+  left: 999px;
+  top: 33px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* z: 6 — track metadata (absolute x/y from frame, matches Figma nodes 130:16–130:27) */
+.page--frame2 .frame2-np-title {
+  position: absolute;
+  left: 1127px;
+  top: 66px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame2 .frame2-np-artist {
+  position: absolute;
+  left: 1127px;
+  top: 98px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame2 .frame2-np-art {
+  position: absolute;
+  left: 1072px;
+  top: 127px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* Thin scrubber line (209px) — Figma uses a line asset; the exported image read as a solid gray block */
+.page--frame2 .frame2-np-progress {
+  position: absolute;
+  left: 1023px;
+  top: 253px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame2 .frame2-np-time-start {
+  position: absolute;
+  left: 1023px;
+  top: 266.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame2 .frame2-np-time-end {
+  position: absolute;
+  left: 1232px;
+  top: 270.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* Menu: above artwork (nav z-index 50 global) */
+.page--frame2 .nav-menu-btn {
+  z-index: 50;
+}
+
+/* z: 25 — Start Timer (Instrument Sans Medium 24px; 194×48 @ 546, 321) */
+.page--frame2 .frame2-start-btn {
+  position: absolute;
+  left: 546px;
+  top: 321px;
+  width: 194px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.page--frame2 .frame2-start-btn:hover {
+  background-color: var(--gray);
+}
+
+a.frame2-start-btn {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* ---- Figma Frame 40 (node 181:473) — Rigatoni, 10:00 — layout matches Frame 2 ---- */
+.page--frame40 {
+  isolation: isolate;
+}
+
+.page--frame40 .frame40-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 385px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page--frame40 .frame40-timer-ring {
+  position: absolute;
+  left: 528px;
+  top: 59px;
+  width: 229px;
+  height: 229px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-timer-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.page--frame40 .frame40-timer-readout {
+  position: absolute;
+  left: calc(50% + 2.5px);
+  top: 173.5px;
+  transform: translate(-50%, -50%);
+  width: 217px;
+  height: 107px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 441px;
+  width: 516px;
+  height: 67px;
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+}
+
+.page--frame40 .frame40-np-bg {
+  position: absolute;
+  left: 999px;
+  top: 33px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-np-title {
+  position: absolute;
+  left: 1127px;
+  top: 66px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-np-artist {
+  position: absolute;
+  left: 1127px;
+  top: 98px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-np-art {
+  position: absolute;
+  left: 1072px;
+  top: 127px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-np-progress {
+  position: absolute;
+  left: 1023px;
+  top: 253px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-np-time-start {
+  position: absolute;
+  left: 1023px;
+  top: 266.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame40 .frame40-np-time-end {
+  position: absolute;
+  left: 1232px;
+  top: 270.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame40 .nav-menu-btn {
+  z-index: 50;
+}
+
+.page--frame40 .frame40-start-btn {
+  position: absolute;
+  left: 546px;
+  top: 321px;
+  width: 194px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.page--frame40 .frame40-start-btn:hover {
+  background-color: var(--gray);
+}
+
+a.frame40-start-btn {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* ---- Figma Frame 42 (node 181:511) — Spaghetti, 11:00 — layout matches Frame 40 ---- */
+.page--frame42 {
+  isolation: isolate;
+}
+
+.page--frame42 .frame42-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 385px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page--frame42 .frame42-timer-ring {
+  position: absolute;
+  left: 528px;
+  top: 59px;
+  width: 229px;
+  height: 229px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-timer-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.page--frame42 .frame42-timer-readout {
+  position: absolute;
+  left: calc(50% + 2.5px);
+  top: 173.5px;
+  transform: translate(-50%, -50%);
+  width: 217px;
+  height: 107px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 441px;
+  width: 516px;
+  height: 67px;
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+}
+
+.page--frame42 .frame42-np-bg {
+  position: absolute;
+  left: 999px;
+  top: 33px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-np-title {
+  position: absolute;
+  left: 1127px;
+  top: 66px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-np-artist {
+  position: absolute;
+  left: 1127px;
+  top: 98px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-np-art {
+  position: absolute;
+  left: 1072px;
+  top: 127px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-np-progress {
+  position: absolute;
+  left: 1023px;
+  top: 253px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-np-time-start {
+  position: absolute;
+  left: 1023px;
+  top: 266.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame42 .frame42-np-time-end {
+  position: absolute;
+  left: 1232px;
+  top: 270.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame42 .nav-menu-btn {
+  z-index: 50;
+}
+
+.page--frame42 .frame42-start-btn {
+  position: absolute;
+  left: 546px;
+  top: 321px;
+  width: 194px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.page--frame42 .frame42-start-btn:hover {
+  background-color: var(--gray);
+}
+
+a.frame42-start-btn {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* ---- Figma Frame 44 (node 181:548) — Farfalle, 12:00 — layout matches Frame 42 ---- */
+.page--frame44 {
+  isolation: isolate;
+}
+
+.page--frame44 .frame44-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 385px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page--frame44 .frame44-timer-ring {
+  position: absolute;
+  left: 528px;
+  top: 59px;
+  width: 229px;
+  height: 229px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-timer-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.page--frame44 .frame44-timer-readout {
+  position: absolute;
+  left: calc(50% + 2.5px);
+  top: 173.5px;
+  transform: translate(-50%, -50%);
+  width: 217px;
+  height: 107px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 441px;
+  width: 516px;
+  height: 67px;
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+}
+
+.page--frame44 .frame44-np-bg {
+  position: absolute;
+  left: 999px;
+  top: 33px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-np-title {
+  position: absolute;
+  left: 1127px;
+  top: 66px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-np-artist {
+  position: absolute;
+  left: 1127px;
+  top: 98px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-np-art {
+  position: absolute;
+  left: 1072px;
+  top: 127px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-np-progress {
+  position: absolute;
+  left: 1023px;
+  top: 253px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-np-time-start {
+  position: absolute;
+  left: 1023px;
+  top: 266.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame44 .frame44-np-time-end {
+  position: absolute;
+  left: 1232px;
+  top: 270.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame44 .nav-menu-btn {
+  z-index: 50;
+}
+
+.page--frame44 .frame44-start-btn {
+  position: absolute;
+  left: 546px;
+  top: 321px;
+  width: 194px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.page--frame44 .frame44-start-btn:hover {
+  background-color: var(--gray);
+}
+
+a.frame44-start-btn {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* ---- Figma Frame 45 (node 181:568) — Ravioli, 5:00 — layout matches Frame 44 ---- */
+.page--frame45 {
+  isolation: isolate;
+}
+
+.page--frame45 .frame45-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 385px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page--frame45 .frame45-timer-ring {
+  position: absolute;
+  left: 528px;
+  top: 59px;
+  width: 229px;
+  height: 229px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-timer-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.page--frame45 .frame45-timer-readout {
+  position: absolute;
+  left: calc(50% + 2.5px);
+  top: 173.5px;
+  transform: translate(-50%, -50%);
+  width: 217px;
+  height: 107px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 441px;
+  width: 516px;
+  height: 67px;
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+}
+
+.page--frame45 .frame45-np-bg {
+  position: absolute;
+  left: 999px;
+  top: 33px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-np-title {
+  position: absolute;
+  left: 1127px;
+  top: 66px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-np-artist {
+  position: absolute;
+  left: 1127px;
+  top: 98px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-np-art {
+  position: absolute;
+  left: 1072px;
+  top: 127px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-np-progress {
+  position: absolute;
+  left: 1023px;
+  top: 253px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-np-time-start {
+  position: absolute;
+  left: 1023px;
+  top: 266.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame45 .frame45-np-time-end {
+  position: absolute;
+  left: 1232px;
+  top: 270.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame45 .nav-menu-btn {
+  z-index: 50;
+}
+
+.page--frame45 .frame45-start-btn {
+  position: absolute;
+  left: 546px;
+  top: 321px;
+  width: 194px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.page--frame45 .frame45-start-btn:hover {
+  background-color: var(--gray);
+}
+
+a.frame45-start-btn {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* ---- Figma Frame 39 (node 181:442) — Timer 2, 1280×832 ---- */
+.page--frame39 {
+  isolation: isolate;
+}
+
+.page--frame39 .frame39-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 385px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page--frame39 .frame39-timer-ring {
+  position: absolute;
+  left: 528px;
+  top: 59px;
+  width: 229px;
+  height: 229px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-timer-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 2:00 (Inter Regular 64px) */
+.page--frame39 .frame39-timer-readout {
+  position: absolute;
+  left: calc(50% + 2.5px);
+  top: 173.5px;
+  transform: translate(-50%, -50%);
+  width: 217px;
+  height: 107px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 441px;
+  width: 516px;
+  height: 67px;
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+}
+
+.page--frame39 .frame39-np-bg {
+  position: absolute;
+  left: 999px;
+  top: 33px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Title width 172px per node 181:465 */
+.page--frame39 .frame39-np-title {
+  position: absolute;
+  left: 1127px;
+  top: 66px;
+  transform: translate(-50%, -50%);
+  width: 172px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-np-artist {
+  position: absolute;
+  left: 1127px;
+  top: 98px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-np-art {
+  position: absolute;
+  left: 1072px;
+  top: 127px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-np-progress {
+  position: absolute;
+  left: 1023px;
+  top: 253px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-np-time-start {
+  position: absolute;
+  left: 1023px;
+  top: 266.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame39 .frame39-np-time-end {
+  position: absolute;
+  left: 1232px;
+  top: 270.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame39 .nav-menu-btn {
+  z-index: 50;
+}
+
+.page--frame39 .frame39-start-btn {
+  position: absolute;
+  left: 546px;
+  top: 321px;
+  width: 194px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.page--frame39 .frame39-start-btn:hover {
+  background-color: var(--gray);
+}
+
+a.frame39-start-btn {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* ---- Figma Frame 38 (node 181:425) — Times up, 1280×832 ---- */
+.page--frame38 {
+  isolation: isolate;
+}
+
+/* Instrument Serif 90px / lh 94 — centered @ top 153px */
+.page--frame38 .frame38-headline {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 153px;
+  transform: translate(-50%, -50%);
+  width: 585px;
+  height: 128px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 90px;
+  line-height: 94px;
+  color: var(--black);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* image 3 — 724×477 @ top 278px, crop per Figma */
+.page--frame38 .frame38-colander {
+  position: absolute;
+  left: calc(50% + 2px);
+  top: 278px;
+  transform: translateX(-50%);
+  width: 724px;
+  height: 477px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-colander__clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-colander__clip img {
+  position: absolute;
+  width: 135.36%;
+  height: 205.45%;
+  max-width: none;
+  left: -17.96%;
+  top: -58.28%;
+  object-fit: cover;
+  display: block;
+}
+
+.page--frame38 .frame38-np-bg {
+  position: absolute;
+  left: 1004px;
+  top: 22px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-np-title {
+  position: absolute;
+  left: 1132px;
+  top: 55px;
+  transform: translate(-50%, -50%);
+  width: 172px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-np-artist {
+  position: absolute;
+  left: 1132px;
+  top: 87px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-np-art {
+  position: absolute;
+  left: 1077px;
+  top: 116px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-np-progress {
+  position: absolute;
+  left: 1028px;
+  top: 242px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-np-time-start {
+  position: absolute;
+  left: 1028px;
+  top: 255.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame38 .frame38-np-time-end {
+  position: absolute;
+  left: 1237px;
+  top: 259.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page--frame38 .nav-menu-btn {
+  z-index: 50;
+}
+
+/* ---- Figma Frame 9 (node 84:187) — Timer 1 Done modal ---- */
+.page--frame9 {
+  isolation: isolate;
+}
+
+.page--frame9 .frame9-dimmed {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.page--frame9 .frame9-pot {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 385px;
+  transform: translateX(-50%);
+  width: 761px;
+  height: 447px;
+}
+
+.page--frame9 .frame9-pot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page--frame9 .frame9-timer-ring {
+  position: absolute;
+  left: 528px;
+  top: 59px;
+  width: 229px;
+  height: 229px;
+}
+
+.page--frame9 .frame9-timer-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.page--frame9 .frame9-timer-readout {
+  position: absolute;
+  left: calc(50% + 2.5px);
+  top: 173.5px;
+  transform: translate(-50%, -50%);
+  width: 217px;
+  height: 107px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--black);
+}
+
+.page--frame9 .frame9-start-pill {
+  position: absolute;
+  left: 546px;
+  top: 321px;
+  width: 194px;
+  height: 48px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.page--frame9 .frame9-start-label {
+  position: absolute;
+  left: 645px;
+  top: 345px;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  text-align: center;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+}
+
+.page--frame9 .frame9-pot-shadow {
+  position: absolute;
+  left: 383px;
+  top: 439px;
+  width: 516px;
+  height: 67px;
+  z-index: 2;
+  pointer-events: none;
+  display: block;
+}
+
+/* Modal: 482×482 @ top 250, centered */
+.page--frame9 .frame9-modal {
+  position: absolute;
+  left: 50%;
+  top: 250px;
+  transform: translateX(-50%);
+  width: 482px;
+  height: 482px;
+  background-color: var(--cream);
+  border: 4px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 15;
+}
+
+.page--frame9 .frame9-modal__close {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  width: 47px;
+  height: 47px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  font-size: 18px;
+  font-family: var(--font-sans);
+  color: var(--black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  transition: background-color 0.15s;
+}
+
+.page--frame9 .frame9-modal__close:hover {
+  background-color: var(--gray);
+}
+
+.page--frame9 .frame9-modal__title {
+  position: absolute;
+  left: 50%;
+  top: 64.5px;
+  transform: translate(-50%, -50%);
+  width: 348px;
+  font-family: var(--font-serif);
+  font-size: 60px;
+  font-weight: 400;
+  color: var(--black);
+  text-align: center;
+  line-height: 1;
+  margin: 0;
+}
+
+.page--frame9 .frame9-modal__body {
+  position: absolute;
+  left: 50%;
+  top: 241px;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 36px;
+  color: var(--black);
+  text-align: center;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.page--frame9 .frame9-btn-begin {
+  position: absolute;
+  left: 523px;
+  top: 660px;
+  width: 229px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cream);
+  border: 2px solid var(--green);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--green);
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: 1;
+  transition: background-color 0.15s, color 0.15s;
+  z-index: 20;
+}
+
+.page--frame9 .frame9-btn-begin:hover {
+  background-color: var(--gray);
+  color: var(--green);
+}
+
+.page--frame9 .frame9-np-bg {
+  position: absolute;
+  left: 999px;
+  top: 24px;
+  width: 256px;
+  height: 256px;
+  background-color: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-sizing: border-box;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.page--frame9 .frame9-np-title {
+  position: absolute;
+  left: 1127px;
+  top: 57px;
+  transform: translate(-50%, -50%);
+  width: 172px;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.page--frame9 .frame9-np-artist {
+  position: absolute;
+  left: 1127px;
+  top: 89px;
+  transform: translate(-50%, -50%);
+  width: 156px;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--black);
+  text-align: center;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.page--frame9 .frame9-np-art {
+  position: absolute;
+  left: 1072px;
+  top: 118px;
+  width: 111px;
+  height: 111px;
+  object-fit: cover;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.page--frame9 .frame9-np-progress {
+  position: absolute;
+  left: 1023px;
+  top: 244px;
+  width: 209px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.22);
+  z-index: 9;
+  pointer-events: none;
+}
+
+.page--frame9 .frame9-np-time-start {
+  position: absolute;
+  left: 1023px;
+  top: 257.5px;
+  transform: translateY(-50%);
+  width: 35px;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  z-index: 9;
+  pointer-events: none;
+}
+
+.page--frame9 .frame9-np-time-end {
+  position: absolute;
+  left: 1232px;
+  top: 261.5px;
+  transform: translate(-100%, -50%);
+  width: 35px;
+  font-family: 'Inter', var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--black);
+  text-align: right;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.page--frame9 .nav-menu-btn {
+  z-index: 50;
+}
