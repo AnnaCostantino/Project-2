@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Recipes</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../script.js" defer></script>
+</head>
+<body>
+  <div class="page page--recipes">
+
+    <!-- Navigation -->
+    <div class="nav-menu-btn" id="menuBtn" tabindex="0" role="button" aria-haspopup="true">
+      Menu
+      <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-dropdown__header">Menu</div>
+        <a href="saved-recipes.html">Saved Recipes</a>
+        <a href="song-library.html">Song Library</a>
+        <a href="../index.html">Timer</a>
+      </div>
+    </div>
+    <button class="nav-add-btn" id="addBtn" type="button">+</button>
+
+    <!-- Page Title -->
+    <h1 class="recipes-title">Saved Recipes</h1>
+
+    <!-- Recipe Grid (populated by script.js) -->
+    <div class="recipes-grid" id="recipesGrid"></div>
+
+    <!-- Recipe Detail Modal -->
+    <div class="modal-overlay" id="recipeModal" role="dialog" aria-modal="true">
+      <div class="modal modal--detail">
+        <button class="modal__close" id="closeRecipeModal" type="button">&#x2715;</button>
+        <h2 class="modal__title" id="recipeModalTitle"></h2>
+        <img class="modal__image" id="recipeModalImage" src="" alt="">
+        <div class="modal__details" id="recipeModalDetails"></div>
+      </div>
+    </div>
+
+    <!-- Custom Recipe Modal -->
+    <div class="modal-overlay" id="customModal" role="dialog" aria-modal="true">
+      <div class="modal modal--custom">
+        <button class="modal__close" id="closeCustomModal" type="button">&#x2715;</button>
+        <h2 class="modal__title">Custom Recipe</h2>
+
+        <label class="modal__upload" id="uploadLabel">
+          <input type="file" accept="image/*" id="customImageInput" style="display:none">
+          <img id="uploadPreview" src="" alt="">
+          <span id="uploadText">Upload Image</span>
+        </label>
+
+        <div class="modal__fields">
+          <input class="modal__input" type="number" id="customTimers" placeholder="Timers" min="1" max="99">
+          <input class="modal__input" type="text" id="customDuration" placeholder="Timer Duration">
+        </div>
+
+        <button class="btn-save" id="saveCustomRecipe">Save Recipe</button>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
