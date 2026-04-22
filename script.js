@@ -9,63 +9,63 @@ const SONGS = [
     title: 'California',
     artist: 'Joni Mitchell',
     length: '3:51',
-    image: 'https://www.figma.com/api/mcp/asset/b7843ad7-d0ca-4f13-a4b7-a79de1ae66fd'
+    image: '../assets/album-california.png'
   },
   {
     id: 'bags',
     title: 'Bags',
     artist: 'Clairo',
     length: '4:20',
-    image: 'https://www.figma.com/api/mcp/asset/b7c246ff-6a75-4240-974a-97f2c17bf12c'
+    image: '../assets/album-bags.png'
   },
   {
     id: 'about-you',
     title: 'About You',
     artist: 'The 1975',
     length: '5:26',
-    image: 'https://www.figma.com/api/mcp/asset/61611407-86fc-447a-b29e-0ed3e1dbdfec'
+    image: '../assets/album-about-you.png'
   },
   {
     id: 'halfway',
     title: 'Halfway',
     artist: 'Flipturn',
     length: '4:12',
-    image: 'https://www.figma.com/api/mcp/asset/2dc69b5b-7e26-4ab1-baac-ae797ef16045'
+    image: '../assets/album-halfway.png'
   },
   {
     id: 'kingston',
     title: 'Kingston',
     artist: 'Faye Webster',
     length: '3:22',
-    image: 'https://www.figma.com/api/mcp/asset/4f1cb4f7-5646-4d15-aef0-777e266cafe8'
+    image: '../assets/album-kingston.png'
   },
   {
     id: 'aperture',
     title: 'Aperture',
     artist: 'Harry Styles',
     length: '5:12',
-    image: 'https://www.figma.com/api/mcp/asset/05d13294-0ef9-4b2d-a272-a4c34e151d49'
+    image: '../assets/album-aperture.png'
   },
   {
     id: 'daylight',
     title: 'Daylight',
     artist: 'Taylor Swift',
     length: '4:53',
-    image: 'https://www.figma.com/api/mcp/asset/0b4d84a0-083c-41d2-80f1-1d0df4b5c4d9'
+    image: '../assets/album-daylight.png'
   },
   {
     id: 'dracula',
     title: 'Dracula',
     artist: 'Tame Impala',
     length: '3:25',
-    image: 'https://www.figma.com/api/mcp/asset/719921b5-7cc8-46bf-8d69-8d73a745b291'
+    image: '../assets/album-dracula.png'
   },
   {
     id: 'true-blue',
     title: 'True Blue',
     artist: 'boygenius',
     length: '4:56',
-    image: 'https://www.figma.com/api/mcp/asset/936b9f2f-b827-4b52-ae06-9c167e8d720c'
+    image: '../assets/album-true-blue.png'
   }
 ];
 
@@ -81,63 +81,63 @@ const RECIPES = [
   {
     id: 'mac-n-peas',
     name: 'Mac N Peas',
-    image: 'https://www.figma.com/api/mcp/asset/bb979b31-4736-4efb-9960-f431381d784b',
+    image: '../assets/recipe-mac-n-peas.png',
     detailHtml:
       '<strong>Timers:</strong> 2<br><strong>Total Time:</strong> 10 minutes<br><strong>Further Instructions:</strong> Follow box instructions for sauce'
   },
   {
     id: 'rigatoni',
     name: 'Rigatoni',
-    image: 'https://www.figma.com/api/mcp/asset/0ab0e870-a0d7-45a2-bf24-34bf4a9ec04f',
+    image: '../assets/recipe-rigatoni.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 10 minutes<br><strong>Sauce Recommendations:</strong> Vodka, Arabiatta'
   },
   {
     id: 'spaghetti',
     name: 'Spaghetti',
-    image: 'https://www.figma.com/api/mcp/asset/fda18577-2532-4330-8b2f-9607e13c8092',
+    image: '../assets/recipe-spaghetti.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 11 minutes<br><strong>Sauce Recommendations:</strong> Marinara, Bolognese'
   },
   {
     id: 'farfalle',
     name: 'Farfalle',
-    image: 'https://www.figma.com/api/mcp/asset/f85e4c17-6a5d-471a-bae3-260f26cb8f3c',
+    image: '../assets/recipe-farfalle.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 12 minutes<br><strong>Sauce Recommendations:</strong> Pesto or use it in a pasta salad'
   },
   {
     id: 'ravioli',
     name: 'Ravioli',
-    image: 'https://www.figma.com/api/mcp/asset/5710507b-b70f-4517-8c18-b9926ded2842',
+    image: '../assets/recipe-ravioli.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 5 minutes<br><strong>Sauce Recommendations:</strong> Keep it simple with butter or olive oil'
   },
   {
     id: 'fusili',
     name: 'Fusili',
-    image: 'https://www.figma.com/api/mcp/asset/89fe09df-edbc-4cbc-bcdd-a07272c49eea',
+    image: '../assets/recipe-fusili.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 10 minutes<br><strong>Sauce Recommendations:</strong> Vodka, Arabiatta'
   },
   {
     id: 'rotini',
     name: 'Rotini',
-    image: 'https://www.figma.com/api/mcp/asset/619a0eb9-47a3-4099-af18-5fc431738060',
+    image: '../assets/recipe-rotini.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 12 minutes<br><strong>Sauce Recommendations:</strong> Vodka, Arabiatta, or great for pasta salad'
   },
   {
     id: 'shells',
     name: 'Shells',
-    image: 'https://www.figma.com/api/mcp/asset/830e8d55-659a-48d4-8fb4-8c1c5b255aaf',
+    image: '../assets/recipe-shells.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 12 minutes<br><strong>Sauce Recommendations:</strong> Alfredo, Cacio e Pepe'
   },
   {
     id: 'tortellini',
     name: 'Tortellini',
-    image: 'https://www.figma.com/api/mcp/asset/3450a24e-fa09-4ea7-9437-5241dc7d26b9',
+    image: '../assets/recipe-tortellini.png',
     detailHtml:
       '<strong>Timers:</strong> 1<br><strong>Total Time:</strong> 12 minutes<br><strong>Sauce Recommendations:</strong> Keep it simple with butter or olive oil'
   }
@@ -279,7 +279,7 @@ function initSaveRecipe() {
     const newRecipe = {
       id: 'custom-' + Date.now(),
       name: 'Custom Recipe',
-      image: imgSrc || 'https://www.figma.com/api/mcp/asset/bb979b31-4736-4efb-9960-f431381d784b',
+      image: imgSrc || '../assets/recipe-mac-n-peas.png',
       detailHtml:
         '<strong>Timers:</strong> ' +
         timers +
